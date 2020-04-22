@@ -67,11 +67,37 @@ func nojam10984(){
     result2=0
   }
 }
+func min(a int,b int) int{
+  if a>b {
+      return b
+  }else{return a}
+}
 
 func nojam1149(){
-  
+  var N int
+  var dp [1000][3] int
+  var arr [1000][3] int
+  fmt.Scan(&N)
+  for i:=0; i<N;i++{
+    for j:=0;j<3;j++{
+      fmt.Scan(&arr[i][j])
+    }
+  }
+  dp[0][0]=arr[0][0]
+  dp[0][1]=arr[0][1]
+  dp[0][2]=arr[0][2]
+  for i:=1;i<N;i++{
+    dp[i][0]= min(dp[i-1][1],dp[i-1][2])+arr[i][0]
+    dp[i][1]= min(dp[i-1][0],dp[i-1][2])+arr[i][1]
+    dp[i][2]= min(dp[i-1][0],dp[i-1][1])+arr[i][2]
+  }
+  result:=2147438647
+  for i:=0;i<3;i++{
+    if dp[N-1][i]<result{result=dp[N-1][i]}
+  }
+  fmt.Println(result)
 }
 
 func main() {
-  nojam10984()
+  nojam1149()
 }
