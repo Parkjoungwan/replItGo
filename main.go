@@ -220,10 +220,38 @@ func nojam15649DFS(Arr[] int,Select[] int,check[] bool,Cnt int, M int, N int){
       check[i] = false;
     }
 }
-func nojam15649(){
+func nojam15650(){
+  var N int
+  var M int
   
+  fmt.Scan(&N, &M)
+  var Arr [] int = make([]int,N)
+  var check [] bool = make([]bool,N) 
+  for i:=0;i<N;i++{
+    Arr[i]=i+1
+  }
+  nojam15650DFS(Arr,check,0,0,M,N)
+    wr.Flush()
+}
+func nojam15650DFS(Arr[] int,check[] bool,Idx int,Cnt int, M int, N int){
+  if(Cnt==M){
+    for i:=0;i<N;i++{
+      if check[i]==true{
+      wr.WriteByte(byte(Arr[i]) + '0')
+      wr.WriteByte(' ')
+      }
+    }
+    wr.WriteByte('\n')
+    return
+  }
+  for i:=Idx;i<N;i++{
+    if(check[i]==true){continue}
+    check[i] = true;
+    nojam15650DFS(Arr, check, i,Cnt+1,M,N);
+    check[i] = false;
+  }
 }
 
 func main() {
-  nojam15649()
+  nojam15650()
 }
