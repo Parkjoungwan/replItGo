@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+    "bufio"
+    "os"
+    "fmt"
+)
+var wr = bufio.NewWriter(os.Stdout)
 
 func nojam17173() {
   var N int
@@ -179,7 +184,46 @@ func nojam16433(){
     }
   }
 }
+func nojam11650(){
+  
+}
+
+func nojam15649(){
+    var N int
+    var M int
+  
+    fmt.Scan(&N, &M)
+    var Arr [] int = make([]int,N)
+    var Select [] int = make([]int, N)
+    var check [] bool = make([]bool,N) 
+    for i:=0;i<N;i++{
+      Arr[i]=i+1
+    }
+    nojam15649DFS(Arr,Select,check,0,M,N)
+    wr.Flush()
+}
+
+func nojam15649DFS(Arr[] int,Select[] int,check[] bool,Cnt int, M int, N int){
+    if(Cnt==M){
+      for i:=0;i<M;i++{
+        wr.WriteByte(byte(Select[i]) + '0')
+        wr.WriteByte(' ')
+      }
+      wr.WriteByte('\n')
+      return
+    }
+    for i:=0;i<N;i++{
+      if(check[i]==true){continue}
+      check[i] = true;
+      Select[Cnt]=Arr[i];
+      nojam15649DFS(Arr,Select,check,Cnt+1,M,N);
+      check[i] = false;
+    }
+}
+func nojam15649(){
+  
+}
 
 func main() {
-  nojam16433()
+  nojam15649()
 }
