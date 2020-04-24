@@ -98,6 +98,25 @@ func nojam1149(){
   fmt.Println(result)
 }
 
+func nojam10995(){
+  var N int
+  fmt.Scan(&N)
+  for i:=0;i<N;i++{
+    if i%2==0{
+      for j:=0;j<N;j++{
+        fmt.Print("*")
+        fmt.Print(" ")
+      }
+    } else{
+      for k:=0;k<N;k++{
+        fmt.Print(" ")
+        fmt.Print("*")
+      }
+    }
+    fmt.Println()
+  }
+}
+
 func main() {
-  nojam1149()
+  nojam10995()
 }
