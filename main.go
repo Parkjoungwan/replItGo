@@ -116,7 +116,70 @@ func nojam10995(){
     fmt.Println()
   }
 }
+func nojam16433case1(N int){
+  for i:=0;i<N;i++{
+    if i%2==0{
+      for j:=0;j<N;j++{
+        if j%2==0{
+          fmt.Print(".")
+        }else{
+          fmt.Print("v")
+        }
+      }
+    }else{
+      for k:=0;k<N;k++{
+        if k%2==0{
+          fmt.Print("v")
+        }else{
+          fmt.Print(".")
+        }
+      }
+    }
+    fmt.Println()
+  }
+}
+func nojam16433case2(N int){
+  for i:=0;i<N;i++{
+    if i%2==0{
+      for j:=0;j<N;j++{
+        if j%2==0{
+          fmt.Print("v")
+        }else{
+          fmt.Print(".")
+        }
+      }
+    }else{
+      for k:=0;k<N;k++{
+        if k%2==0{
+          fmt.Print(".")
+        }else{
+          fmt.Print("v")
+        }
+      }
+    }
+    fmt.Println()
+  }
+}
+func nojam16433(){
+  var N int
+  var R int
+  var C int
+  fmt.Scan(&N, &R, &C)
+  if R%2==0{
+    if C%2==0{
+      nojam16433case2(N)
+    }else{
+      nojam16433case1(N)
+    }
+  }else{
+    if C%2==0{
+      nojam16433case1(N)
+    }else{
+      nojam16433case2(N)
+    }
+  }
+}
 
 func main() {
-  nojam10995()
+  nojam16433()
 }
