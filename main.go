@@ -4,6 +4,7 @@ import (
     "bufio"
     "os"
     "fmt"
+    "strconv"
 )
 var wr = bufio.NewWriter(os.Stdout)
 
@@ -265,7 +266,35 @@ func nojam1850(){
     fmt.Fprintf(wr,"%d",1)
   }
 }
+func nojam2579big( A int, B int) int{
+  if A>B{
+    return A
+  } else{
+    return B
+  }
+}
+func nojam2579(){
+  sc := bufio.NewScanner(os.Stdin)
+  var N int
+  var SA [301]int
+  var MA [301]int
+  if sc.Scan(){
+      N,_= strconv.Atoi(sc.Text())
+  }
+  for i:=1;i<=N;i++{
+    if sc.Scan(){
+      SA[i],_= strconv.Atoi(sc.Text())
+    }
+  }
+  MA[1]=SA[1]
+  MA[2]=SA[1]+SA[2]
+  MA[3]=nojam2579big(SA[1]+SA[3],SA[2]+SA[3])
+  for i:=4;i<=N;i++{
+    MA[i]=nojam2579big(SA[i]+SA[i-1]+MA[i-3],SA[i]+MA[i-2])
+  }
+  fmt.Println(MA[N])
 
+}
 func main() {
-  nojam1850()
+  nojam2579()
 }
