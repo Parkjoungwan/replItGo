@@ -251,7 +251,21 @@ func nojam15650DFS(Arr[] int,check[] bool,Idx int,Cnt int, M int, N int){
     check[i] = false;
   }
 }
+func nojam1850(){
+  wr = bufio.NewWriter(os.Stdout)
+  defer wr.Flush()
+  var N,M,R int
+  fmt.Scan(&N,&M)
+  for M!=0 {
+    R=N%M
+    N=M
+    M=R
+  } 
+  for i:=0;i<3;i++{
+    fmt.Fprintf(wr,"%d",1)
+  }
+}
 
 func main() {
-  nojam15650()
+  nojam1850()
 }
